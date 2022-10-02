@@ -1,18 +1,20 @@
 import express from 'express';
 import usersService from '../services/mersures.service';
 import debug from 'debug';
+import mersuresService from "../services/mersures.service";
 
 const log: debug.IDebugger = debug('app:mesures-controller');
 
 class MesuresController {
     async listMesures(req: express.Request, res: express.Response) {
-        const users = await usersService.list(100, 0);
-        res.status(200).send(users);
+        const {from, to} = req.params;
+        const mesures = await mersuresService.list(from, to);
+        res.status(200).send(mesures);
     }
 
-    async createMesures(req: express.Request, res: express.Response) {
-        const userId = await usersService.create(req.body);
-        res.status(201).send({ id: userId });
+    async createMesure(req: express.Request, res: express.Response) {
+        const mesure = await mersuresService.create(req.body);
+        res.status(201).send({ id: mesure._id });
     }
 }
 

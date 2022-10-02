@@ -1,7 +1,4 @@
-export interface CreateMesureDto {
-    CPM: String,
-    aCPM: String,
-    uSV: Number,
-    _id: String,
-    createdAt: Date,
+export interface GetMesuresDto {
+    from: String,
+    to: String,
 }

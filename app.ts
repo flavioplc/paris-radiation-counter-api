@@ -11,9 +11,9 @@ import * as winston from 'winston';
 import * as expressWinston from 'express-winston';
 import cors from 'cors';
 import { CommonRoutesConfig } from './common/common.routes.config';
-import { UsersRoutes } from './users/users.routes.config';
 import debug from 'debug';
 import helmet from 'helmet';
+import {MesuresRoutes} from "./mesures/mesures.routes.config";
 
 const app: express.Application = express();
 const server: http.Server = http.createServer(app);
@@ -43,7 +43,7 @@ if (!process.env.DEBUG) {
 
 app.use(expressWinston.logger(loggerOptions));
 
-routes.push(new UsersRoutes(app));
+routes.push(new MesuresRoutes(app));
 
 app.get('/', (req: express.Request, res: express.Response) => {
     res.status(200).send(`Server running at http://localhost:${port}`);

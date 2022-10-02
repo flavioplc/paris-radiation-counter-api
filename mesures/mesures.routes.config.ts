@@ -1,9 +1,8 @@
 import { CommonRoutesConfig } from '../common/common.routes.config';
-import UsersController from './controllers/mesures.controller';
-import UsersMiddleware from './middleware/mesures.middleware';
-import { body } from 'express-validator';
 
 import express from 'express';
+import MesuresController from "./controllers/mesures.controller";
+import MesuresMiddleware from "./middleware/mesures.middleware";
 
 export class MesuresRoutes extends CommonRoutesConfig {
     constructor(app: express.Application) {
@@ -14,12 +13,11 @@ export class MesuresRoutes extends CommonRoutesConfig {
         this.app
             .route(`/mesures`)
             .get(
-                UsersController.listUsers
+                MesuresController.listMesures
             )
             .post(
-                UsersMiddleware.validateRequiredUserBodyFields,
-                UsersMiddleware.validateSameEmailDoesntExist,
-                UsersController.createUser
+                MesuresMiddleware.validateId,
+                MesuresController.createMesure
             );
 
         return this.app;
