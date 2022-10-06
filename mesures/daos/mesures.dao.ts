@@ -9,10 +9,9 @@ class MesuresDao {
     Schema = mongooseService.getMongoose().Schema;
 
     mesureSchema = new this.Schema({
-        _id: String,
         createdAt: Date,
         CPM: String,
-        aCPM: String,
+        ACPM: String,
         uSV: Number,
     });
 
@@ -24,6 +23,7 @@ class MesuresDao {
 
     async addMesure(mesureFields: CreateMesureDto) {
         const mesure = new this.Mesure({
+            createdAt: Date.now(),
             ...mesureFields,
         });
         await mesure.save();

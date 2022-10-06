@@ -2,6 +2,7 @@ import express from 'express';
 import usersService from '../services/mersures.service';
 import debug from 'debug';
 import mersuresService from "../services/mersures.service";
+import { CreateMesureDto } from '../dto/create.mesure.dto';
 
 const log: debug.IDebugger = debug('app:mesures-controller');
 
@@ -13,8 +14,9 @@ class MesuresController {
     }
 
     async createMesure(req: express.Request, res: express.Response) {
-        const mesure = await mersuresService.create(req.body);
-        res.status(201).send({ id: mesure._id });
+        const query : any = req.query;
+        await mersuresService.create(query);
+        res.status(201).send('OK.ERR0');
     }
 }
 

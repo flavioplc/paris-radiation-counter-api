@@ -11,13 +11,15 @@ export class MesuresRoutes extends CommonRoutesConfig {
 
     configureRoutes(): express.Application {
         this.app
+            .route(`/log`)
+            .get(
+                MesuresMiddleware.validateId,
+                MesuresController.createMesure
+            );
+        this.app
             .route(`/mesures`)
             .get(
                 MesuresController.listMesures
-            )
-            .post(
-                MesuresMiddleware.validateId,
-                MesuresController.createMesure
             );
 
         return this.app;

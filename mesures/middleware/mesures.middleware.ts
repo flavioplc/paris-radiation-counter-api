@@ -7,7 +7,7 @@ class MesuresMiddleware {
         res: express.Response,
         next: express.NextFunction
     ) {
-        if (req.params.GID) {
+        if (req.query.GID) {
             next();
         } else {
             res.status(400).send({

@@ -1,5 +1,5 @@
 export interface CreateMesureDto {
     CPM: String,
-    aCPM: String,
+    ACPM: String,
     uSV: Number,
 }
