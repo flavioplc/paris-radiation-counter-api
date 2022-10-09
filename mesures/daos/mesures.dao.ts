@@ -34,10 +34,10 @@ class MesuresDao {
     async getMesures(timerange: GetMesuresDto) {
 
         return this.Mesure.find({
-            createdAt: {
-                $gte: timerange.from,
-                $lte: timerange.to,
-            }
+            // createdAt: {
+            //     $gte: timerange.from,
+            //     $lte: timerange.to,
+            // }
         })
             .exec();
     }
